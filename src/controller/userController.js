@@ -4,13 +4,13 @@ async function login(req, res, next) {
     otp: Math.floor(Math.random() * 1000000).toString(),
     newuser:''
   }
-  const user =await userModel.find({where:{mobile:req.body.mobile}})
-  if(user){
-    otpObj.newuser = '1'
-    res.send(otpObj)
-  }else{
+  // const user =await userModel.find({where:{mobile:req.body.mobile}})
+  if(false){
     otpObj.newuser = '0'
-    res.send(otpObj)
+   return res.send(otpObj)
+  }else{
+    otpObj.newuser = '1'
+   return res.send(otpObj)
   }
   }
 
