@@ -6,3 +6,16 @@ GET http://localhost:3000/api/users/login
 
 ###qr
 GET http://localhost:3000/api/qr/generate
+
+### create user 
+POST http://localhost:3000/api/users/create
+Content-Type: application/json
+
+{
+    "first_name":"ajay",
+    "last_name":"singh",
+    "type":1
+}
+
+### get all user list
+GET http://localhost:3000/api/users/get-user

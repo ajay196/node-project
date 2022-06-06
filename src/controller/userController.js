@@ -1,22 +1,38 @@
-// const userModel = require('../model/userModel')
-// const db = require('../model/index')
+const userModel = require('../models/userModel')
+const {db} = require('../models/index')
+const {sucessHandler, errorHandler} = require('../shared/responseHandler')
 async function login(req, res, next) {
-//  const x = await db.sequelize.query('SELECT * FROM pg_stat_activity;')
-//  console.log(x);
-  // await userModel.create({firstName:'ajay',lastName:'singh'})
   const otpObj= {
     mobile:'',
     otp: Math.floor(Math.random() * 1000000).toString(),
     newuser:''
   }
-  // const user =await userModel.find({where:{mobile:req.body.mobile}})
-  if(false){
+  const user =await userModel.find({where:{mobile:req.body.name}})
+  if(user){
     otpObj.newuser = '0'
-   return res.send(otpObj)
+   return res.send(sucessHandler('otp generated sucessfully'))
   }else{
-    otpObj.newuser = '1'
-   return res.send(otpObj)
+   return res.send(errorHandler('user not found'))
   }
   }
 
-module.exports ={login}
+  async function createUser(req, res, next){
+    const body = req.body
+    try{
+      const response = await userModel.create(body)
+    return res.send(sucessHandler('user created sucessfully',response))
+    }
+    catch (err) {
+      return res.send(errorHandler('error ', err))
+    }
+  }
+
+  async function userList(req, res, next){
+    try{
+      const userData = await userModel.findAndCountAll()
+    return res.send(sucessHandler('user list',userData))
+    }catch (err) {
+      return res.send(err)
+    }
+  }
+module.exports ={login,createUser,userList}
