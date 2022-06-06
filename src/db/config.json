@@ -7,5 +7,14 @@
         "dialect": "mysql",
         "timezone": "+05:30",
         "logging": true
+      },
+      "production": {
+        "username": "sql4496993",
+        "password": "qxva3yQVSp",
+        "database": "sql4496993",
+        "host": "sql4.freemysqlhosting.net",
+        "dialect": "mysql",
+        "timezone": "+05:30",
+        "logging": true
       }
 }
