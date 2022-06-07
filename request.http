@@ -19,3 +19,24 @@ Content-Type: application/json
 
 ### get all user list
 GET http://localhost:3000/api/users/get-user
+
+### get single user
+GET http://localhost:3000/api/users/detail/1
+
+### create login
+POST http://localhost:3000/api/login/create-login
+Content-Type: application/json
+
+{
+    "email":"ajay123@gmail.com",
+    "password":"x123yx@123"
+}
+
+### verify login 
+POST http://localhost:3000/api/login/login-verify
+Content-Type: application/json
+
+{
+    "email":"ajay@gmail.com",
+    "password":"xyx@123"
+}
