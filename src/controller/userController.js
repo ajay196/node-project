@@ -27,6 +27,17 @@ async function login(req, res, next) {
     }
   }
 
+  async function getUserById(req, res, next){
+    try{
+      const id = req.params.id
+      const response = await userModel.findByPk(id)
+    return res.send(sucessHandler('user detail fetch sucessfully',response))
+    }
+    catch (err) {
+      return res.send(errorHandler('error ', err))
+    }
+  }
+
   async function userList(req, res, next){
     try{
       const userData = await userModel.findAndCountAll()
@@ -35,4 +46,4 @@ async function login(req, res, next) {
       return res.send(err)
     }
   }
-module.exports ={login,createUser,userList}
+module.exports ={login,createUser,userList,getUserById}
