@@ -1,4 +1,8 @@
 const dotenv = require('dotenv')
+const environment = process.argv.slice(2)[0] || 'development'
+dotenv.config({ path: `./env/${environment}.env` })
+process.env.NODE_ENV = environment
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

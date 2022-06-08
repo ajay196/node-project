@@ -1,6 +1,6 @@
-const userModel = require('../models/userModel')
-const {db} = require('../models/index')
-const {sucessHandler, errorHandler} = require('../shared/responseHandler')
+const userModel = require('../../models/userModel')
+const {db} = require('../../models/index')
+const {sucessHandler, errorHandler} = require('../../shared/responseHandler')
 async function login(req, res, next) {
   const otpObj= {
     mobile:'',

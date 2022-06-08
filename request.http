@@ -23,20 +23,32 @@ GET http://localhost:3000/api/users/get-user
 ### get single user
 GET http://localhost:3000/api/users/detail/1
 
-### create login
-POST http://localhost:3000/api/login/create-login
+### create auth token 
+POST http://localhost:3000/api/users/token
 Content-Type: application/json
 
 {
-    "email":"ajay123@gmail.com",
+    "email":"ajaysingh@gmail.com"
+}
+
+### create login
+POST http://localhost:3000/api/login/signup
+Content-Type: application/json
+
+{
+    "email":"ajaysingh@gmail.com",
     "password":"x123yx@123"
 }
 
 ### verify login 
-POST http://localhost:3000/api/login/login-verify
+POST http://localhost:3000/api/login/signin
 Content-Type: application/json
 
 {
-    "email":"ajay@gmail.com",
-    "password":"xyx@123"
+    "email":"ajaysingh@gmail.com",
+    "password":"x123yx@123"
 }
+
+
+### getting all login 
+GET http://localhost:3000/api/login/get-all
