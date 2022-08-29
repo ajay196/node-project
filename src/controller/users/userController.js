@@ -7,7 +7,7 @@ async function login(req, res, next) {
     otp: Math.floor(Math.random() * 1000000).toString(),
     newuser:''
   }
-  const user =await userModel.find({where:{mobile:req.body.name}})
+  const user =await userModel.findAll({where:{mobile:req.body.name}})
   if(user){
     otpObj.newuser = '0'
    return res.send(sucessHandler('otp generated sucessfully'))
